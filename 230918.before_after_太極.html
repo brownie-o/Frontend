@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
+     *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
     .taichi {
       width: 400px;
       height: 400px;
@@ -21,8 +26,8 @@
 
     .taichi::before {
       content: '';
-      width: 199px;
-      height: 199px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       border: 1px solid white;
       position: absolute;
@@ -34,8 +39,8 @@
 
     .taichi::after {
       content: '';
-      width: 199px;
-      height: 199px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       border: 1px solid black;
       position: absolute;
