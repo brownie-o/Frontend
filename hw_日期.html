@@ -23,39 +23,44 @@
     // 某些月份的天數是 30，某些月份的天數是 31
     // parseInt(變數或是數字的文字) 可以把文字轉數字
 
-    let year = prompt('幾年?')
-    let month = prompt('幾月?')
-    let date = prompt('幾號?')
+    let year = parseInt(prompt('幾年?'))
+    let month = parseInt(prompt('幾月?'))
+    let date = parseInt(prompt('幾號?'))
 
     let totalday = 0
 
     for (let i = 1; i < year; i++) {
-      if (i % 4 != 0) {
-        totalday += 365
-      } else { totalday += 366 }
+      if ((i % 4 === 0 && i % 100 !== 0) || year % 400 === 0) {
+        totalday += 366
+      } else { totalday += 365 }
     }
     console.log(totalday)
 
     for (let i = 1; i < month; i++) {
-      let dayofmonth = 0
-      if ((i == 1) || (i == 3) || (i == 5) || (i == 7) || (i == 8) || (i == 10)) {
+      if (i === 2) {
+        if (
+          (year % 4 === 0 && year % 100 !== 0) ||
+          (year % 400 === 0)) {
+          totalday += 29
+          console.log(totalday)
+        } else { 
+          totalday += 28
+          console.log(totalday)
+        }
+      } else if (
+        (i <= 7 && i % 2 === 0) ||
+        (i >= 8 && i % 2 === 1)
+      ) {
+        totalday += 30
+        console.log(totalday)
+      } else if (
+        (i <= 7 && i % 2 === 1) ||
+        (i >= 8 && i % 2 === 0)
+      ) {
         totalday += 31
         console.log(totalday)
       }
-      else if ((i == 4) || (i == 6) || (i == 9) || (i == 11)) {
-        totalday += 30
-        console.log(totalday)
-      }
-      else if ((i == 2) && (0 != year % 4)) {
-        totalday += 28
-        console.log(totalday)
-      }
-      else if ((i == 2) && (0 == year % 4)) {
-        totalday += 29
-        console.log(totalday)
-      }
     }
-    console.log(totalday)
 
     document.write(totalday + date * 1)
   </script>
